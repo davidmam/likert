@@ -179,13 +179,14 @@ likert.bar.plot <- function(l,
 			theme(axis.ticks=element_blank(), 
 				  strip.background=element_rect(fill=panel.strip.color, 
 				  							    color=panel.strip.color))
+		sp='left'
 		if(is.null(panel.arrange)) {
-			p <- p + facet_wrap(~ Item)
+			p <- p + facet_wrap(~ Item, strip.position=sp)
 		} else if(panel.arrange == 'v') {
-			p <- p + facet_wrap(~ Item, ncol=1)
-			#p <- p + facet_grid(Item ~ .)
+			p <- p + facet_wrap(~ Item, ncol=1, strip.position=sp)
+			#p <- p + facet_grid(Item ~ ., strip.position=sp)
 		} else if(panel.arrange == 'h') {
-			p <- p + facet_wrap(~ Item, nrow=1)
+			p <- p + facet_wrap(~ Item, nrow=1, strip.position=sp)
 		}
 		if(!missing(group.order)) {
 			p <- p + scale_x_discrete(limits=rev(group.order), drop=FALSE)
