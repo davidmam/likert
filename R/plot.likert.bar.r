@@ -29,6 +29,7 @@ utils::globalVariables(c('value','Group','variable','low','Item','high',
 likert.bar.plot <- function(l,
 							group.order,
 							center=(l$nlevels-1)/2 + 1,
+			    sp='top',
 							...) {
 	opts <- likert.options(...)
 	for(i in names(opts)) {
@@ -179,7 +180,7 @@ likert.bar.plot <- function(l,
 			theme(axis.ticks=element_blank(), 
 				  strip.background=element_rect(fill=panel.strip.color, 
 				  							    color=panel.strip.color))
-		sp='left'
+		#sp='left'
 		if(is.null(panel.arrange)) {
 			p <- p + facet_wrap(~ Item, strip.position=sp)
 		} else if(panel.arrange == 'v') {
